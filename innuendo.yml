@@ -1,0 +1,23 @@
+jenkins:
+  systemMessage: "Welcome to the Innuendo Quality controle center."
+  remotingSecurity:
+    enabled: true
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: DevOps
+          password: "toto"
+          name: Innuendo
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Innuendo admin"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - DevOps
+jobs:
+  - file: job_dsl.groovy
